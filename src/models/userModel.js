@@ -1,10 +1,10 @@
-import mongoose, {schema} from "mongoose";
+import mongoose from "mongoose";
 
 import jwt from "jsonwebtoken";
 
 import bcrypt from "bcrypt";
 
-const userSchema= new schema({
+const userSchema= new mongoose.Schema({
 
     username: {
         type: String,
@@ -36,7 +36,7 @@ const userSchema= new schema({
     },
     watchHistory: [
         {
-            type: Schema.Types.ObjectId,
+            type: mongoose.Types.ObjectId,
             ref: "Video"
         }
     ],
@@ -58,7 +58,7 @@ const userSchema= new schema({
 
 
 userSchema.pre("save", async function (next) {    
-                  // it will hit when the save functionality get called
+                  // it will hit when the "Save" functionality get called
 
     if(!this.isModified("password")) return next();  //if any data will update also password fill will update .to prevent this we are making a if condition which check is password modified or not if not modified directy call the next middleware 
 
