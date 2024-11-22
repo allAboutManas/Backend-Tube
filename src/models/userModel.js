@@ -102,4 +102,9 @@ userSchema.methods.generateRefreshToken=function(){
 
 
 
+// There is no more difference between refresh token and access token one is short lived and one is long lived 
+
+//generally access token is used for short period of time and refresh token is long lived .
+
+
 export const User = mongoose.model("User", userSchema)
